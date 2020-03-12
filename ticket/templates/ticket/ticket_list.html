@@ -1,0 +1,11 @@
+{% extends "ticket/base_generic.html" %}
+
+<h1> All Tickets </h1>
+{% block content %}
+
+{% for instance in object_list %}
+
+  <p><a href='{{ instance.get_absolute_url }}'>{{ instance.id }} - {{ instance.title }}
+
+    {%endfor%}
+{% endblock %}

@@ -9,10 +9,25 @@ from django.views.generic import (
 )
 from .models import Project
 from .forms import ProjectModelForm
+from django.contrib.auth.mixins import LoginRequiredMixin#,PermissionRequriedMixin
+
+from django.http import HttpResponse
+from django.contrib.auth.decorators import permission_required
+from ticket.models import Ticket
 # Create your views here.
-class ProjectListView(ListView):
+@permission_required('project.can_add_ticket')
+def ticket_view(request):
+    return HttpResponse('Ticket')
+
+'''
+class MyView(PermissionRequiredMixin, View):
+    #single permission_required=('app.permission','app.permission')
+    #multiple permission_requried= ('app.permission', 'app.permission')
+'''
+class ProjectListView(LoginRequiredMixin,ListView):
     template_name='project/project_list.html'
     queryset = Project.objects.all()
+
 
 class ProjectDetailView(DetailView):
     template_name='project/project_detail.html'

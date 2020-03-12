@@ -1,3 +1,6 @@
+{% extends "project/base_generic.html" %}
+
+
 {% block content %}
 <form action='.' method='POST'>{% csrf_token %}
   <h1>Do you want to delete the project "{{ object.title }}"?</h1>

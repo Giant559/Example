@@ -1,9 +1,11 @@
+{% extends "project/base_generic.html" %}
+
 <h1> All BLANK </h1>
 {% block content %}
 
 {% for instance in object_list %}
 
-  <p><a href='{{ instance.get_absolute_url }}'>{{ instance.id }} - {{ instance.title }}
+  <p><a href='{{ instance.get_absolute_url }}'>{{ instance.id }} - {{ instance.title }}-  <p>{{instance.ticket__description}}</p>
 
     {%endfor%}
 {% endblock %}
